@@ -25,6 +25,7 @@ import (
 	"github.com/spf13/pflag"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
+	"k8s.io/klog"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
@@ -44,9 +45,17 @@ func printVersion() {
 	log.Info(fmt.Sprintf("Go Version: %s", runtime.Version()))
 	log.Info(fmt.Sprintf("Go OS/Arch: %s/%s", runtime.GOOS, runtime.GOARCH))
 	log.Info(fmt.Sprintf("Version of operator-sdk: %v", sdkVersion.Version))
+	klog.V(1).Infof("11111111")
+	klog.V(2).Infof("222222222222")
+	klog.V(3).Infof("3333333333")
+	log.V(0).Info("aaaaaaaa")
+	log.V(1).Info("bbbbbbbbbb")
+	log.V(2).Info("cccccccccccc")
+	log.V(3).Info("ddddddddddddd")
 }
 
 func main() {
+	klog.InitFlags(nil)
 	// Add the zap logger flag set to the CLI. The flag set must
 	// be added before calling pflag.Parse().
 	pflag.CommandLine.AddFlagSet(zap.FlagSet())
