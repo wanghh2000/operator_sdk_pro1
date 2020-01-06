@@ -84,7 +84,7 @@ func main() {
 
 	ctx := context.TODO()
 	// Become the leader before proceeding
-	err = leader.Become(ctx, "operator_sdk_pro1-lock")
+	err = leader.Become(ctx, "operator-sdk-pro1-lock")
 	if err != nil {
 		log.Error(err, "")
 		os.Exit(1)

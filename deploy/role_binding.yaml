@@ -4,7 +4,7 @@ metadata:
   name: operator_sdk_pro1
 subjects:
 - kind: ServiceAccount
-  name: operator_sdk_pro1
+  name: operator-sdk-pro1
 roleRef:
   kind: Role
   name: operator_sdk_pro1

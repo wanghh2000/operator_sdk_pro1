@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: operator_sdk_pro1
+  name: operator-sdk-pro1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: operator_sdk_pro1
+      name: operator-sdk-pro1
   template:
     metadata:
       labels:
-        name: operator_sdk_pro1
+        name: operator-sdk-pro1
     spec:
-      serviceAccountName: operator_sdk_pro1
+      serviceAccountName: operator-sdk-pro1
       containers:
-        - name: operator_sdk_pro1
+        - name: operator-sdk-pro1
           # Replace this with the built image name
-          image: wanghh2000/admin-operator:v0.0.1
+          image: wanghaihui/admin-operator:v0.0.1
           command:
           - operator_sdk_pro1
           imagePullPolicy: Always
@@ -30,4 +30,4 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
-              value: "operator_sdk_pro1"
+              value: "operator-sdk-pro1"
