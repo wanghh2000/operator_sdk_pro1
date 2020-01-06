@@ -16,7 +16,7 @@ spec:
       containers:
         - name: operator_sdk_pro1
           # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: wanghh2000/admin-operator:v0.0.1
           command:
           - operator_sdk_pro1
           imagePullPolicy: Always

@@ -1,0 +1,7 @@
+apiVersion: branch.dzht.com/v1
+kind: AdminInfo
+metadata:
+  name: example-admininfo
+spec:
+  # Add fields here
+  size: 3
