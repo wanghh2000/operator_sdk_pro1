@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: operator_sdk_pro1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: operator_sdk_pro1
+  template:
+    metadata:
+      labels:
+        name: operator_sdk_pro1
+    spec:
+      serviceAccountName: operator_sdk_pro1
+      containers:
+        - name: operator_sdk_pro1
+          # Replace this with the built image name
+          image: REPLACE_IMAGE
+          command:
+          - operator_sdk_pro1
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "operator_sdk_pro1"
