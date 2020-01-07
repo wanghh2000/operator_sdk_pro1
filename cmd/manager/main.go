@@ -15,6 +15,7 @@ import (
 	"github.com/wanghh2000/operator_sdk_pro1/pkg/controller"
 	"github.com/wanghh2000/operator_sdk_pro1/version"
 
+	"github.com/golang/glog"
 	"github.com/operator-framework/operator-sdk/pkg/k8sutil"
 	kubemetrics "github.com/operator-framework/operator-sdk/pkg/kube-metrics"
 	"github.com/operator-framework/operator-sdk/pkg/leader"
@@ -25,7 +26,6 @@ import (
 	"github.com/spf13/pflag"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
-	"k8s.io/klog"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
@@ -45,17 +45,24 @@ func printVersion() {
 	log.Info(fmt.Sprintf("Go Version: %s", runtime.Version()))
 	log.Info(fmt.Sprintf("Go OS/Arch: %s/%s", runtime.GOOS, runtime.GOARCH))
 	log.Info(fmt.Sprintf("Version of operator-sdk: %v", sdkVersion.Version))
-	klog.V(1).Infof("11111111")
-	klog.V(2).Infof("222222222222")
-	klog.V(3).Infof("3333333333")
-	log.V(0).Info("aaaaaaaa")
+	//klog.V(1).Infof("11111111")
+	//klog.V(2).Infof("222222222222")
+	//klog.V(3).Infof("3333333333")
+
+	glog.V(1).Infof("11111111")
+	glog.V(2).Infof("222222222222")
+	glog.V(3).Infof("3333333333")
+
+	log.V(0).Info("aaaaaaaa1")
 	log.V(1).Info("bbbbbbbbbb")
 	log.V(2).Info("cccccccccccc")
 	log.V(3).Info("ddddddddddddd")
+
 }
 
 func main() {
-	klog.InitFlags(nil)
+	//klog.InitFlags(nil)
+
 	// Add the zap logger flag set to the CLI. The flag set must
 	// be added before calling pflag.Parse().
 	pflag.CommandLine.AddFlagSet(zap.FlagSet())
@@ -65,6 +72,8 @@ func main() {
 	pflag.CommandLine.AddGoFlagSet(flag.CommandLine)
 
 	pflag.Parse()
+	defer glog.Flush()
+	// glog: go run cmd/manager/main.go -v 3 --logtostderr=true
 
 	// Use a zap logr.Logger implementation. If none of the zap
 	// flags are configured (or if the zap flag set is not being
