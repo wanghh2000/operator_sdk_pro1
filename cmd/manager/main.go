@@ -49,6 +49,7 @@ func printVersion() {
 	//klog.V(2).Infof("222222222222")
 	//klog.V(3).Infof("3333333333")
 
+	// glog: go run cmd/manager/main.go -v 3 --logtostderr=true
 	glog.V(1).Infof("11111111")
 	glog.V(2).Infof("222222222222")
 	glog.V(3).Infof("3333333333")
